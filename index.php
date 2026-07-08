@@ -1,5 +1,19 @@
 
 <?php
+
+
+
+require "./assets/funciones.php";
+
+
+saludar(); //devuelve un echo con "Hola" aquí, donde llamo a la función.
+
+echo "<br>";
+
+
+
+
+
 // este código se ejecuta en el servidor antes de cargar el html en cliente
 // aquí dentro puede ir código php
 
@@ -52,6 +66,9 @@ if($contador >= 5){
 }else{
     $mensaje = "Es menor que 5 ($contador)";
 }
+
+
+
 
 // comparadores y Operadores lógicos
 
@@ -112,7 +129,119 @@ if(isset($_GET['nombre']) && isset($_GET['apellido'])){
 // $apellidoRecogido = $_GET['apellido'] ?? $_GET['apellido'];
 
 
+// switch case (como un if anidado para más opciones)
 
+$dia = 1;
+
+switch ($dia) {
+
+    case 1:
+        echo "Lunes";
+        break;
+
+    case 2:
+        echo "Martes";
+        break;
+
+    default:
+        echo "Otro";
+
+}
+
+echo "<br>";
+
+// un switch pero más moderno con el match
+echo match ($dia) {
+
+    1 => "Lunes",
+    2 => "Martes",
+    default => "Otro"
+} . "<br>";
+
+
+// iteradores while
+
+$i=1;
+
+while($i <= 10){
+
+    echo $i."<br>";
+
+    $i++;
+
+}
+
+echo "<br>";
+
+// do while
+$i=1;
+
+do{
+
+    echo $i ."<br>";
+
+    $i++;
+
+}while($i<=10);
+
+
+echo "<br>";
+
+
+// for
+for($i=1 ;$i<=10; $i++){
+
+    echo $i ."<br>";
+
+}
+
+echo "<br>";
+
+
+// array normal y foreach para recorrerlo. Un array normal son valores dentro de la memoria de un contenedor, indexados en posiciones. Podemos recorrerlos a través de sus posiciones.
+
+$colores=["Rojo","Azul","Verde"];
+
+foreach($colores as $color){
+
+    echo $color . "<br>";
+
+}
+
+echo $colores[1] . "<br>";
+
+
+
+// arrays asociativos. contienen clave y valor asociado. Podemos recorrer los items del array asociativo a través de sus claves
+
+$persona=[
+    "nombre"=>"Igor",
+    "edad"=>40,
+    "Animes"=>["Naruto", "Bleach", "Dragon Ball"]
+];
+
+echo $persona["nombre"] . "<br>"; //Igor
+
+echo $persona["Animes"][0] . "<br>"; //Naruto
+
+
+
+// Funciones: objetivo poder reutilizar el código desde diferentes sitios
+function saludar(){
+    echo "Hola";
+}
+
+
+// función con parámetros y tipada
+function sumar(int $a, int $b): int{
+    return $a + $b;
+}
+
+echo sumar(2, 5) . "<br>"; // 7
+
+
+// la función sumar2 la traigo desde otro fichero php, el cual está incluided arriba.
+echo sumar2(2,5.2) . "<br>"; // 7,2
 
 ?>
 
@@ -216,7 +345,11 @@ if(isset($_GET['nombre']) && isset($_GET['apellido'])){
         
    
 
-    <div class="espacio"></div>
+    <div class="espacio">
+        <?php
+        saludar(); //devuelve un echo con "Hola" aquí, donde llamo a la función.
+        ?>
+    </div>
     
 </body>
 </html>
