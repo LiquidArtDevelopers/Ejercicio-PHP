@@ -243,6 +243,83 @@ echo sumar(2, 5) . "<br>"; // 7
 // la función sumar2 la traigo desde otro fichero php, el cual está incluided arriba.
 echo sumar2(2,5.2) . "<br>"; // 7,2
 
+
+// ---------------------------
+// Ejericios de la clase 89
+
+echo "Ejercicios de la clase 89: <br>";
+
+// ejercicio 1
+$minombre = "Igor Aranaz";
+echo "Mi nombre es: " . $minombre;
+
+// ejercicio 2
+$num1 = 5;
+$num2 = 10;
+
+$resultadoSuma = $num1 + $num2;
+$resultadoResta = $num1 - $num2;
+$resultadoMulti = $num1 * $num2;
+$resultadoDivi = $num1 / $num2;
+
+// ejercicio 3
+$edad=24;
+
+if($edad >= 18){
+    $comentarioEdad = "Es mayor de edad";
+}else{
+    $comentarioEdad = "Es menor de edad";
+}
+
+// ejercicio 4 y 5 directamente abajo en el html
+
+// ejercicio 6
+
+$ciudades = ["Donostia", "Bilbao", "Gasteiz", "Iruña", "Baiona"];
+
+// ejercicio 7
+
+$persona = 
+[
+    "nombre"    =>  "Igor",
+    "apellidos" =>  "Aranaz Pastor",
+    "telefono"  =>  "628749350",
+    "edad"      =>  46
+
+];
+
+
+
+// ejercicio 8
+echo "<br>";
+
+echo calcularMayor(45, 45);
+
+function calcularMayor(int|float $n1, int|float $n2): string{
+    if($n1 > $n2){
+        return "El numero $n1 es mayor que $n2";
+    }elseif($n1 < $n2){
+        return "El numero $n2 es mayor que $n1";
+    }else{
+        return "Los números son iguales";
+    }
+}
+
+
+
+// ejercicio 9
+
+
+echo "<br>";
+$costeSinIva = 14589;
+echo "El el precio con IVA de $costeSinIva € es: " . calcularIva($costeSinIva) . "€";
+
+function calcularIva(int $precio){
+        $iva = (21 / 100) + 1;
+        return $precio * $iva;
+}
+
+
 ?>
 
 <!-- fuera de las etiquetas phpo, va código html -->
@@ -286,9 +363,17 @@ echo sumar2(2,5.2) . "<br>"; // 7,2
         .espacio{
             height: 200px;
         }
+        table{
+            width: 500px;
+        }
+        tr, td{
+            border: 1px solid black;
+        }
     </style>
 </head>
 <body>
+
+    <!-- aquí , lo primero serán todos los echo que ejecute en el php de arriba -->
 
     <h1> <?php echo $nombreCompleto ?> </h1>
 
@@ -342,6 +427,105 @@ echo sumar2(2,5.2) . "<br>"; // 7,2
     <?php
     }
     ?>
+
+    <h2>Ejercicios de la clase 89</h2>
+
+    <p>1) Este es mi nombre: <?= $minombre ?></p>
+
+    <p>2) hacer operaciones matemáticas</p>
+    <p>los números son el 5 y el 10</p>
+    <ul>
+        <li>Suma: <?= $resultadoSuma ?></li>
+        <li>resta: <?= $resultadoResta ?></li>
+        <li>Multiplicación: <?= $resultadoMulti ?></li>
+        <li>División: <?= $resultadoDivi ?></li>
+    </ul>
+
+    <p>3) Mostrar mensaje en función de la edad (<?= $edad ?> años)</p>
+    <p><?= $comentarioEdad ?></p>
+
+    <p>4) Ejercicio de itereción</p>
+
+    <?php
+
+    for($i=1; $i<=20; $i++){
+       echo <<<HTML
+        <p>$i</p>    
+        HTML; 
+    };
+    
+    ?>
+
+    <p>5) Ejercicio de itereción sólo con números pares</p>
+
+    <?php
+
+    for($i=1; $i<=20; $i++){
+
+        if($i % 2 == 0){
+            echo <<<HTML
+            <p>$i</p>    
+            HTML;
+        }        
+    };
+    
+    ?>
+
+
+    <p>6) Mostrar ciudades del array</p>
+
+    <table>
+        <tr>
+            <td>Numero</td>
+            <td>Ciudad</td>
+        </tr>
+        <?php
+        $num = 1;
+        foreach($ciudades as $ciudad){
+
+            echo 
+            <<<HTML
+            <tr>
+                <td>$num</td>
+                <td>$ciudad</td>
+            </tr>
+            HTML;
+            $num++;
+        }        
+        ?>        
+    </table>
+
+    <p>Ejercicio 7</p>
+    <table>
+        <tr>
+            <th>Tipo</th>
+            <th>valor</th>
+        </tr>
+        <tr>
+            <td>Nombre</td>
+            <td><?= $persona["nombre"] ?></td>
+        </tr>
+        <tr>
+            <td>Apellidos</td>
+            <td><?= $persona["apellidos"] ?></td>
+        </tr>
+        <tr>
+            <td>Teléfono</td>
+            <td><?= $persona["telefono"] ?></td>
+        </tr>
+        <tr>
+            <td>Edad</td>
+            <td><?= $persona["edad"] ?></td>
+        </tr>
+    </table>
+
+
+
+    
+    
+    
+
+ 
         
    
 
